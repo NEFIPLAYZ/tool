@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NENO TOOL — all in one</title>
+  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/NEFIPLAYZ/toolsvg/main/icons.svg">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/NEFIPLAYZ/toolsvg/main/icons.svg">
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/NEFIPLAYZ/toolcss/main/style.css">
+</head>
+<!-- NENO TOOL build: 2026-11-01 · CSS/JS/icon GitHub Pages se load hote hain -->
+<body>
+<div class="app">
+<aside>
+  <div class="side-top">
+    <div class="side-head">
+      <h1>NENO TOOL</h1>
+      <button class="burger" id="burgerBtn" onclick="burgerClick()" title="Open / close menu" aria-label="Menu">&#9776;</button>
+    </div>
+  </div>
+  <div class="menu-theme">
+    <button class="themebtn" onclick="toggleTheme()" id="themeBtn"><span id="themeIco">&#9790;</span> <span id="themeLbl">Light mode</span></button>
+  </div>
+  <button title="Minecraft" class="grp-btn" data-g="mc" onclick="toggleGroup('mc',this)">
+    <span>Minecraft</span>
+    <span class="count">1</span>
+  </button>
+  <div class="grp-list" id="g-mc">
+    <button class="nav" onclick="openTool('mc',this)">MC Paintings Creator</button>
+  </div>
+  <button title="JSON &amp; Data" class="grp-btn open" data-g="json" onclick="toggleGroup('json',this)">
+    <span>JSON &amp; Data</span>
+    <span class="count">5</span>
+  </button>
+  <div class="grp-list" id="g-json">
+    <button class="nav" onclick="openTool('jsoncode',this)">JSON &rarr; code</button>
+    <button class="nav" onclick="openTool('csvboth',this)">CSV tools</button>
+    <button title="JSON formatter" class="nav active" onclick="openTool('json',this)">JSON formatter</button>
+  </div>
+  <button title="Text" class="grp-btn" data-g="text" onclick="toggleGroup('text',this)">
+    <span>Text</span>
+    <span class="count">8</span>
+  </button>
+  <div class="grp-list" id="g-text">
+    <button class="nav" onclick="openTool('caseboth',this)">Case &amp; slug</button>
+    <button class="nav" onclick="openTool('listboth',this)">Line &amp; list tools</button>
+    <button class="nav" onclick="openTool('textboth',this)">Text analysis</button>
+    <button class="nav" onclick="openTool('diffboth',this)">Diff / compare</button>
+    <button title="Find &amp; replace" class="nav" onclick="openTool('replace',this)">Find &amp; replace</button>
+    <button title="Regex tester" class="nav" onclick="openTool('regex',this)">Regex tester</button>
+  </div>
+  <button title="Encode" class="grp-btn" data-g="encode" onclick="toggleGroup('encode',this)">
+    <span>Encode</span>
+    <span class="count">3</span>
+  </button>
+  <div class="grp-list" id="g-encode">
+    <button class="nav" onclick="openTool('htmlboth',this)">HTML tools</button>
+    <button class="nav" onclick="openTool('b64both',this)">Base64</button>
+  </div>
+  <button title="Web &amp; Dev" class="grp-btn" data-g="web" onclick="toggleGroup('web',this)">
+    <span>Web &amp; Dev</span>
+    <span class="count">7</span>
+  </button>
+  <div class="grp-list" id="g-web">
+    <button class="nav" onclick="openTool('hashboth',this)">Hash generator</button>
+    <button title="JWT decoder" class="nav" onclick="openTool('jwt',this)">JWT decoder</button>
+    <button title="URL parser" class="nav" onclick="openTool('url',this)">URL parser</button>
+    <button title="UUID" class="nav" onclick="openTool('uuid',this)">UUID</button>
+    <button title="Number base" class="nav" onclick="openTool('base',this)">Number base</button>
+  </div>
+  <button title="Calculators" class="grp-btn" data-g="calc" onclick="toggleGroup('calc',this)">
+    <span>Calculators</span>
+    <span class="count">5</span>
+  </button>
+  <div class="grp-list" id="g-calc">
+    <button class="nav" onclick="openTool('passboth',this)">Password tools</button>
+    <button title="EMI calculator" class="nav" onclick="openTool('emi',this)">EMI calculator</button>
+    <button title="GST calculator" class="nav" onclick="openTool('gst',this)">GST calculator</button>
+    <button title="Percentage" class="nav" onclick="openTool('percent',this)">Percentage</button>
+    <button title="Unit converter" class="nav" onclick="openTool('unit',this)">Unit converter</button>
+  </div>
+  <button title="More tools" class="grp-btn" data-g="more" onclick="toggleGroup('more',this)">
+    <span>More tools</span>
+    <span class="count">8</span>
+  </button>
+  <div class="grp-list" id="g-more">
+    <button class="nav" onclick="openTool('genboth',this)">Random &amp; mock data</button>
+    <button title="Markdown preview" class="nav" onclick="openTool('md',this)">Markdown preview</button>
+    <button title="Image resizer" class="nav" onclick="openTool('img',this)">Image resizer</button>
+    <button title="Cron explainer" class="nav" onclick="openTool('cron',this)">Cron explainer</button>
+    <button title="Text to speech" class="nav" onclick="openTool('tts',this)">Text to speech</button>
+    <button title="Scratchpad" class="nav" onclick="openTool('notes',this)">Scratchpad</button>
+  </div>
+  <button title="Money" class="grp-btn" data-g="money" onclick="toggleGroup('money',this)">
+    <span>Money</span>
+    <span class="count">3</span>
+  </button>
+  <div class="grp-list" id="g-money">
+    <button title="SIP calculator" class="nav" onclick="openTool('sip',this)">SIP calculator</button>
+    <button title="Compound interest" class="nav" onclick="openTool('compound',this)">Compound interest</button>
+    <button title="Discount" class="nav" onclick="openTool('discount',this)">Discount</button>
+  </div>
+  <button title="Text extras" class="grp-btn" data-g="tx2" onclick="toggleGroup('tx2',this)">
+    <span>Text extras</span>
+    <span class="count">4</span>
+  </button>
+  <div class="grp-list" id="g-tx2">
+    <button class="nav" onclick="openTool('numboth',this)">Number tools</button>
+  </div>
+  <button title="Utilities" class="grp-btn" data-g="util" onclick="toggleGroup('util',this)">
+    <span>Utilities</span>
+    <span class="count">3</span>
+  </button>
+  <div class="grp-list" id="g-util">
+    <button title="Aspect ratio" class="nav" onclick="openTool('aspect',this)">Aspect ratio</button>
+    <button title="Base64 image" class="nav" onclick="openTool('b64img',this)">Base64 image</button>
+  </div>
+  <button title="Convert &amp; code" class="grp-btn" data-g="conv2" onclick="toggleGroup('conv2',this)">
+    <span>Convert &amp; code</span>
+    <span class="count">6</span>
+  </button>
+  <div class="grp-list" id="g-conv2">
+    <button class="nav" onclick="openTool('yamlboth',this)">JSON &harr; YAML</button>
+    <button title="XML &rarr; JSON" class="nav" onclick="openTool('xml',this)">XML &rarr; JSON</button>
+    <button title="Encrypt / decrypt" class="nav" onclick="openTool('aes',this)">Encrypt / decrypt</button>
+    <button title="HTML &rarr; XML" class="nav" onclick="openTool('htmlxml',this)">HTML &rarr; XML</button>
+    <button title="Blogger template" class="nav" onclick="openTool('blogger',this)">Blogger template</button>
+  </div>
+  <button title="Design" class="grp-btn" data-g="design" onclick="toggleGroup('design',this)">
+    <span>Design</span>
+    <span class="count">3</span>
+  </button>
+  <div class="grp-list" id="g-design">
+    <button class="nav" onclick="openTool('cssboth',this)">CSS generators</button>
+    <button class="nav" onclick="openTool('colourboth',this)">Colour tools</button>
+  </div>
+  <button title="Calc &amp; text" class="grp-btn" data-g="extra" onclick="toggleGroup('extra',this)">
+    <span>Calc &amp; text</span>
+    <span class="count">5</span>
+  </button>
+  <div class="grp-list" id="g-extra">
+    <button class="nav" onclick="openTool('dateboth',this)">Date &amp; time</button>
+  </div>
+</aside>
+
+<main>
+
+<!-- ============ JSON ============ -->
+<section id="t-json" class="tool active">
+  <h2>JSON formatter</h2>
+  <p class="desc">Format, minify, validate, sort keys and extract values by path. Backticks and curly quotes are fixed automatically.</p>
+  <textarea id="jsonIn" data-drop placeholder='{"name":"example","tags":["a","b"],"active":true}'></textarea>
+  <div class="row">
+    <input type="text" id="jsonPath" placeholder="path: user.address.city or tags[0]" style="flex:1">
+  </div>
+  <div class="row">
+    <button class="act pri" onclick="jsonFormat()">Format</button>
+    <button class="act" onclick="jsonMinify()">Minify</button>
+    <button class="act" onclick="jsonValidate()">Validate</button>
+    <button class="act" onclick="jsonSort()">Sort keys</button>
+    <button class="act" onclick="jsonQuery()">Extract by path</button>
+    <button class="act" onclick="clearIn('jsonIn','jsonOut','jsonStatus')">Clear</button>
+  </div>
+  <textarea id="jsonOut" placeholder="Output..."></textarea>
+  <div class="row">
+    <button class="act" onclick="copyOut('jsonOut')">Copy</button>
+    <button class="act" onclick="downloadOut('jsonOut','output.json')">Download .json</button>
+  </div>
+  <div class="status" id="jsonStatus"></div>
+</section>
+
+<!-- ============ COMPARE ============ -->
+
+<!-- ============ CSV <-> JSON ============ -->
+
+<!-- ============ JSON -> TS ============ -->
+
+
+<!-- ============ MOCK ============ -->
+
+
+<!-- ============ CASE ============ -->
+
+
+<!-- ============ LINES ============ -->
+
+
+<!-- ============ REPLACE ============ -->
+<section id="t-replace" class="tool">
+  <h2>Find &amp; replace</h2>
+  <p class="desc">Simple text replace, or replace with regex.</p>
+  <textarea id="repIn" data-drop class="short" placeholder="text"></textarea>
+  <div class="row">
+    <input type="text" id="repFind" placeholder="find this" style="flex:1">
+    <input type="text" id="repWith" placeholder="isse badlo" style="flex:1">
+  </div>
+  <div class="row">
+    <label class="chk"><input type="checkbox" id="repRegex"> Regex ki tarah treat karo</label>
+    <button class="act pri" onclick="doReplace()">Replace all</button>
+  </div>
+  <textarea id="repOut" class="short" placeholder="Result..."></textarea>
+  <div class="row"><button class="act" onclick="copyOut('repOut')">Copy</button></div>
+  <div class="status" id="repStatus"></div>
+</section>
+
+<!-- ============ REGEX ============ -->
+<section id="t-regex" class="tool">
+  <h2>Regex tester</h2>
+  <p class="desc">Shows matches and their groups.</p>
+  <div class="row">
+    <input type="text" id="rxPattern" placeholder="pattern, e.g. (\w+)@(\w+)\.com" style="flex:1">
+    <input type="text" id="rxFlags" placeholder="flags" value="g" style="width:90px">
+  </div>
+  <textarea id="rxIn" data-drop class="short" placeholder="text to search in"></textarea>
+  <div class="row">
+    <button class="act pri" onclick="doRegex()">Test</button>
+    <button class="act" onclick="clearIn('rxIn','rxOut','rxStatus')">Clear</button>
+  </div>
+  <textarea id="rxOut" class="short" placeholder="Matches..."></textarea>
+  <div class="status" id="rxStatus"></div>
+</section>
+
+<!-- ============ TEXT DIFF ============ -->
+
+<!-- ============ STATS ============ -->
+
+
+<!-- ============ SLUG ============ -->
+
+
+<!-- ============ LOREM ============ -->
+
+
+<!-- ============ BASE64 ============ -->
+
+
+<!-- ============ HTML ENTITIES ============ -->
+
+
+<!-- ============ FILE -> BASE64 ============ -->
+
+
+<!-- ============ JWT ============ -->
+<section id="t-jwt" class="tool">
+  <h2>JWT decoder</h2>
+  <p class="desc">View the token header and payload. The signature is not verified — read-only.</p>
+  <textarea id="jwtIn" data-drop class="short" placeholder="eyJhbGciOi..."></textarea>
+  <div class="row"><button class="act pri" onclick="doJwt()">Decode</button></div>
+  <textarea id="jwtOut" placeholder="Header / Payload..."></textarea>
+  <div class="row"><button class="act" onclick="copyOut('jwtOut')">Copy</button></div>
+  <div class="status" id="jwtStatus"></div>
+</section>
+
+<!-- ============ URL ============ -->
+<section id="t-url" class="tool">
+  <h2>URL parser</h2>
+  <p class="desc">URL parts and query parameters, separated.</p>
+  <textarea id="urlIn" data-drop class="short" placeholder="https://example.com/path/page?x=1&y=2#top"></textarea>
+  <div class="row"><button class="act pri" onclick="doUrl()">Parse</button></div>
+  <textarea id="urlOut" class="short"></textarea>
+  <div class="row"><button class="act" onclick="copyOut('urlOut')">Copy</button></div>
+  <div class="status" id="urlStatus"></div>
+</section>
+
+<!-- ============ HASH ============ -->
+
+<!-- ============ UUID ============ -->
+<section id="t-uuid" class="tool">
+  <h2>UUID</h2>
+  <p class="desc">UUID v4 — single or a whole batch.</p>
+  <div class="row">
+    <input type="number" id="uuidCount" value="1" min="1" max="100" style="width:80px">
+    <button class="act pri" onclick="doUuid()">Create</button>
+    <button class="act" onclick="copyOut('uuidOut')">Copy</button>
+  </div>
+  <textarea id="uuidOut" class="short"></textarea>
+  <div class="status" id="uuidStatus"></div>
+</section>
+
+<!-- ============ TIME ============ -->
+
+<!-- ============ COLOUR ============ -->
+
+<!-- ============ NUMBER BASE ============ -->
+<section id="t-base" class="tool">
+  <h2>Number base converter</h2>
+  <p class="desc">Binary, octal, decimal, hex — large numbers too (BigInt).</p>
+  <div class="row">
+    <input type="text" id="baseIn" placeholder="number" style="flex:1">
+    <select id="baseFrom">
+      <option value="10">Decimal</option>
+      <option value="2">Binary</option>
+      <option value="8">Octal</option>
+      <option value="16">Hex</option>
+    </select>
+    <button class="act pri" onclick="doBase()">Convert</button>
+  </div>
+  <textarea id="baseOut" class="short"></textarea>
+  <div class="status" id="baseStatus"></div>
+</section>
+
+<!-- ============ EMI ============ -->
+<section id="t-emi" class="tool">
+  <h2>EMI calculator</h2>
+  <p class="desc">Monthly EMI, total interest and total payment.</p>
+  <div class="row">
+    <input type="number" id="emiP" placeholder="loan amount (₹)" style="flex:1">
+    <input type="number" id="emiR" placeholder="saalana interest %" style="width:150px">
+    <input type="number" id="emiN" placeholder="kitne mahine" style="width:130px">
+  </div>
+  <div class="row"><button class="act pri" onclick="doEmi()">Calculate</button></div>
+  <textarea id="emiOut" class="short"></textarea>
+  <div class="status" id="emiStatus"></div>
+</section>
+
+<!-- ============ GST ============ -->
+<section id="t-gst" class="tool">
+  <h2>GST calculator</h2>
+  <p class="desc">GST exclusive (add) ya inclusive (nikalna).</p>
+  <div class="row">
+    <input type="number" id="gstAmount" placeholder="amount (₹)" style="flex:1">
+    <select id="gstRate">
+      <option value="5">5%</option>
+      <option value="12">12%</option>
+      <option value="18" selected>18%</option>
+      <option value="28">28%</option>
+    </select>
+    <select id="gstMode">
+      <option value="excl">Add GST (exclusive)</option>
+      <option value="incl">GST nikaalo (inclusive)</option>
+    </select>
+    <button class="act pri" onclick="doGst()">Calculate</button>
+  </div>
+  <textarea id="gstOut" class="short"></textarea>
+  <div class="status" id="gstStatus"></div>
+</section>
+
+<!-- ============ PERCENT ============ -->
+<section id="t-percent" class="tool">
+  <h2>Percentage calculator</h2>
+  <p class="desc">Three types of questions together.</p>
+  <div class="row">
+    <input type="number" id="pcA" placeholder="A" style="flex:1">
+    <input type="number" id="pcB" placeholder="B" style="flex:1">
+    <button class="act pri" onclick="doPercent()">Calculate</button>
+  </div>
+  <textarea id="pcOut" class="short"></textarea>
+  <div class="status" id="pcStatus"></div>
+</section>
+
+<!-- ============ UNIT ============ -->
+<section id="t-unit" class="tool">
+  <h2>Unit converter</h2>
+  <p class="desc">Length, weight, temperature, data size.</p>
+  <div class="row">
+    <select id="unitCat" onchange="fillUnits()">
+      <option value="length">Length</option>
+      <option value="weight">Weight</option>
+      <option value="temp">Temperature</option>
+      <option value="data">Data size</option>
+    </select>
+    <input type="number" id="unitVal" placeholder="value" style="flex:1">
+    <select id="unitFrom"></select>
+    <span class="lbl" style="width:auto">&rarr;</span>
+    <select id="unitTo"></select>
+    <button class="act pri" onclick="doUnit()">Convert</button>
+  </div>
+  <textarea id="unitOut" class="short"></textarea>
+  <div class="status" id="unitStatus"></div>
+</section>
+
+<!-- ============ PASSWORD ============ -->
+
+
+
+<!-- ============ MARKDOWN ============ -->
+<section id="t-md" class="tool">
+  <h2>Markdown preview</h2>
+  <p class="desc">Headings, bold, lists, code, links, quotes — all supported. Live preview below.</p>
+  <div class="row" style="align-items:flex-start">
+    <div style="flex:1"><div class="lbl">Markdown</div>
+      <textarea id="mdIn" data-drop oninput="doMd()" placeholder="# Title&#10;&#10;**bold** and *italic*&#10;&#10;- one&#10;- two&#10;&#10;`code` and [link](https://example.com)"></textarea>
+    </div>
+    <div style="flex:1"><div class="lbl">Preview</div>
+      <div class="preview" id="mdPreview"></div>
+    </div>
+  </div>
+  <div class="row">
+    <button class="act pri" onclick="doMd()">Create preview</button>
+    <button class="act" onclick="copyOut('mdOut')">Copy HTML</button>
+    <button class="act" onclick="downloadOut('mdOut','preview.html')">Download .html</button>
+  </div>
+  <textarea id="mdOut" class="short" placeholder="HTML source here..."></textarea>
+  <div class="status" id="mdStatus"></div>
+</section>
+
+<!-- ============ YAML ============ -->
+
+<!-- ============ SQL ============ -->
+
+
+<!-- ============ IMAGE ============ -->
+<section id="t-img" class="tool">
+  <h2>Image resizer</h2>
+  <p class="desc">Choose a photo, set a new size and quality. Everything happens in your browser — the image is never uploaded.</p>
+  <div class="row">
+    <input type="file" id="imgPick" accept="image/*">
+  </div>
+  <div class="row">
+    <span class="lbl" style="width:auto">max width</span>
+    <input type="number" id="imgMax" value="800" min="50" max="5000" style="width:100px">
+    <span class="lbl" style="width:auto">quality</span>
+    <input type="range" id="imgQuality" min="30" max="100" value="80" style="width:140px">
+    <span class="lbl" style="width:auto" id="imgQVal">80%</span>
+    <button class="act pri" onclick="doResize()">Resize</button>
+    <button class="act" onclick="downloadImage()">Download</button>
+  </div>
+  <img id="imgPrev" class="imgprev" alt="" style="display:none">
+  <div class="status" id="imgStatus"></div>
+</section>
+
+<!-- ============ FILE HASH ============ -->
+
+<!-- ============ CRON ============ -->
+<section id="t-cron" class="tool">
+  <h2>Cron explainer</h2>
+  <p class="desc">Understand a cron expression and see the next 5 run times.</p>
+  <div class="row">
+    <input type="text" id="cronIn" placeholder="*/15 9-18 * * 1-5" style="flex:1">
+    <button class="act pri" onclick="doCron()">Samjhao</button>
+  </div>
+  <div class="row">
+    <span class="lbl" style="width:auto">examples:</span>
+    <button class="act" onclick="setVal('cronIn','*/15 9-18 * * 1-5');doCron()">har 15 min, office hours</button>
+    <button class="act" onclick="setVal('cronIn','0 0 * * *');doCron()">roz raat 12</button>
+    <button class="act" onclick="setVal('cronIn','0 9 * * MON');doCron()">Monday 9 baje</button>
+  </div>
+  <textarea id="cronOut" class="short" placeholder="Matlab..."></textarea>
+  <div class="status" id="cronStatus"></div>
+</section>
+
+<!-- ============ TTS ============ -->
+<section id="t-tts" class="tool">
+  <h2>Text to speech</h2>
+  <p class="desc">Read text aloud with your system voice.</p>
+  <textarea id="ttsIn" data-drop class="short" placeholder="Type or paste the text to read..."></textarea>
+  <div class="row">
+    <span class="lbl" style="width:auto">speed</span>
+    <input type="range" id="ttsRate" min="50" max="150" value="100" style="width:140px">
+    <span class="lbl" style="width:auto" id="ttsRateVal">1x</span>
+    <button class="act pri" onclick="doTts()">Suno</button>
+    <button class="act" onclick="stopTts()">Ruko</button>
+  </div>
+  <div class="status" id="ttsStatus"></div>
+</section>
+
+<!-- ============ NOTES ============ -->
+<section id="t-notes" class="tool">
+  <h2>Scratchpad</h2>
+  <p class="desc">Text typed here is saved in your browser — it stays even after you close the page.</p>
+  <textarea id="notesIn" style="height:340px" placeholder="Type anything..."></textarea>
+  <div class="row">
+    <button class="act pri" onclick="saveNotes()">Save</button>
+    <button class="act" onclick="copyOut('notesIn')">Copy</button>
+    <button class="act" onclick="downloadOut('notesIn','notes.txt')">Download .txt</button>
+    <button class="act" onclick="clearNotes()">Mitao</button>
+  </div>
+  <div class="status" id="notesStatus"></div>
+</section>
+
+
+<!-- ============ SIP ============ -->
+<section id="t-sip" class="tool">
+  <h2>SIP calculator</h2>
+  <p class="desc">Monthly investment, years and return — estimated maturity value.</p>
+  <div class="row">
+    <input type="number" id="sipAmt" placeholder="monthly amount (₹)" style="flex:1">
+    <input type="number" id="sipRate" placeholder="expected return %" style="width:160px">
+    <input type="number" id="sipYears" placeholder="saal" style="width:110px">
+    <button class="act pri" onclick="doSip()">Calculate</button>
+  </div>
+  <textarea id="sipOut" class="short"></textarea>
+  <div class="status" id="sipStatus"></div>
+</section>
+
+<!-- ============ COMPOUND ============ -->
+<section id="t-compound" class="tool">
+  <h2>Compound interest</h2>
+  <p class="desc">Principal, rate, years and compounding frequency.</p>
+  <div class="row">
+    <input type="number" id="ciP" placeholder="principal (₹)" style="flex:1">
+    <input type="number" id="ciR" placeholder="rate %" style="width:120px">
+    <input type="number" id="ciY" placeholder="years" style="width:110px">
+    <select id="ciN">
+      <option value="1">saalana</option>
+      <option value="2">6-mahine</option>
+      <option value="4">3-mahine</option>
+      <option value="12" selected>mahina</option>
+    </select>
+    <button class="act pri" onclick="doCompound()">Calculate</button>
+  </div>
+  <textarea id="ciOut" class="short"></textarea>
+  <div class="status" id="ciStatus"></div>
+</section>
+
+<!-- ============ DISCOUNT ============ -->
+<section id="t-discount" class="tool">
+  <h2>Discount</h2>
+  <p class="desc">MRP, discount % and GST — final price.</p>
+  <div class="row">
+    <input type="number" id="dcPrice" placeholder="price (₹)" style="flex:1">
+    <input type="number" id="dcPct" placeholder="discount %" style="width:130px">
+    <input type="number" id="dcGst" placeholder="GST % (optional)" style="width:160px">
+    <button class="act pri" onclick="doDiscount()">Calculate</button>
+  </div>
+  <textarea id="dcOut" class="short"></textarea>
+  <div class="status" id="dcStatus"></div>
+</section>
+
+<!-- ============ HTML -> TEXT ============ -->
+
+
+<!-- ============ CSV -> TABLE ============ -->
+
+<!-- ============ NUMBER TO WORDS ============ -->
+
+
+<!-- ============ ROMAN ============ -->
+
+
+<!-- ============ DATE ADD ============ -->
+
+<!-- ============ ASPECT ============ -->
+<section id="t-aspect" class="tool">
+  <h2>Aspect ratio</h2>
+  <p class="desc">Simplify the ratio and scale the height for a new width (or the reverse).</p>
+  <div class="row">
+    <input type="number" id="arW" placeholder="width" style="flex:1">
+    <input type="number" id="arH" placeholder="height" style="flex:1">
+    <input type="number" id="arNew" placeholder="new width (optional)" style="flex:1">
+    <button class="act pri" onclick="doAspect()">Calculate</button>
+  </div>
+  <textarea id="arOut" class="short"></textarea>
+  <div class="status" id="arStatus"></div>
+</section>
+
+<!-- ============ BASE64 IMAGE ============ -->
+<section id="t-b64img" class="tool">
+  <h2>Base64 image</h2>
+  <p class="desc">Paste a data:image/... base64 string to preview the image.</p>
+  <textarea id="biIn" data-drop class="short" placeholder="data:image/png;base64,iVBORw0KGgo..."></textarea>
+  <div class="row"><button class="act pri" onclick="doB64Img()">Dikhao</button></div>
+  <img id="biPrev" class="imgprev" alt="" style="display:none">
+  <div class="status" id="biStatus"></div>
+</section>
+
+
+<!-- ============ YAML -> JSON ============ -->
+
+<!-- ============ XML -> JSON ============ -->
+<section id="t-xml" class="tool">
+  <h2>XML &rarr; JSON</h2>
+  <p class="desc">Converts XML tags, attributes and text into a JSON object.</p>
+  <textarea id="xmlIn" data-drop class="short" placeholder='<user id="1"><name>Asha</name><city>Pune</city></user>'></textarea>
+  <div class="row"><button class="act pri" onclick="doXml()">Generate JSON</button></div>
+  <textarea id="xmlOut" class="short" placeholder="JSON here..."></textarea>
+  <div class="row">
+    <button class="act" onclick="copyOut('xmlOut')">Copy</button>
+    <button class="act" onclick="downloadOut('xmlOut','output.json')">Download .json</button>
+  </div>
+  <div class="status" id="xmlStatus"></div>
+</section>
+
+<!-- ============ AES ============ -->
+<section id="t-aes" class="tool">
+  <h2>Encrypt / decrypt</h2>
+  <p class="desc">Encrypt text with a password (AES-GCM + PBKDF2). If you forget the password, the data cannot be recovered.</p>
+  <textarea id="aesIn" data-drop class="short" placeholder="text or encrypted base64"></textarea>
+  <div class="row">
+    <input type="text" id="aesPass" placeholder="password" style="flex:1">
+    <button class="act pri" onclick="doAes('enc')">Encrypt</button>
+    <button class="act pri" onclick="doAes('dec')">Decrypt</button>
+  </div>
+  <textarea id="aesOut" class="short" placeholder="Result..."></textarea>
+  <div class="row"><button class="act" onclick="copyOut('aesOut')">Copy</button></div>
+  <div class="status" id="aesStatus"></div>
+</section>
+
+<!-- ============ SETS ============ -->
+
+
+<!-- ============ GRADIENT ============ -->
+
+
+<!-- ============ SHADOW ============ -->
+
+
+<!-- ============ PALETTE ============ -->
+
+<!-- ============ DATE DIFF ============ -->
+
+<!-- ============ TIMEZONE ============ -->
+
+<!-- ============ READABILITY ============ -->
+
+
+<!-- ============ PASSWORD CHECK ============ -->
+
+
+<!-- ============ RANDOM ============ -->
+
+
+
+<!-- ============ HTML -> XML ============ -->
+<section id="t-htmlxml" class="tool">
+  <h2>HTML &rarr; XML</h2>
+  <p class="desc">Paste HTML or <b>index.html</b> file upload kijiye — saaf, well-formed XML mil jaayega. Tags band, attributes quoted, void tags self-closing.</p>
+  <div class="row">
+    <input type="file" id="hxFile" accept=".html,.htm,.txt,text/html">
+    <button class="act" onclick="clearIn('hxIn','hxOut','hxStatus')">Clear</button>
+  </div>
+  <textarea id="hxIn" data-drop placeholder='<!DOCTYPE html>&#10;<html>&#10;  <body>&#10;    <h1 class="title">Hello</h1>&#10;    <img src="a.png">&#10;    <br>&#10;  </body>&#10;</html>'></textarea>
+  <div class="row">
+    <button class="act pri" onclick="doHtmlXml()">Create XML</button>
+    <label class="chk"><input type="checkbox" id="hxFragment"> Sirf body ka andar wala hissa chahiye</label>
+  </div>
+  <textarea id="hxOut" class="short" placeholder="XML appears here..."></textarea>
+  <div class="row">
+    <button class="act" onclick="copyOut('hxOut')">Copy</button>
+    <button class="act" onclick="downloadOut('hxOut','output.xml')">Download .xml</button>
+    <button class="act" onclick="openOut('hxOut','output.xml')">Open in new tab</button>
+  </div>
+  <div class="status" id="hxStatus"></div>
+</section>
+
+
+
+
+
+<!-- ============ BLOGGER ============ -->
+<section id="t-blogger" class="tool">
+  <h2>Blogger template</h2>
+  <p class="desc">Switch between a Blogger theme file (b: tags) and clean HTML. <b>HTML → Blogger XML</b> aapka HTML, uska CSS (b:skin mein) aur poora design saath le jaata hai. <b>Blogger XML → HTML</b> se theme file se saaf HTML nikalta hai.</p>
+  <div class="row">
+    <input type="file" id="bgFile" accept=".xml,.html,.htm,.txt">
+    <button class="act" onclick="clearIn('bgIn','bgOut','bgStatus')">Clear</button>
+  </div>
+  <textarea id="bgIn" data-drop placeholder="Paste HTML or a Blogger template..."></textarea>
+  <div class="row">
+    <button class="act pri" onclick="doBlogger('wrap')">HTML &rarr; Blogger XML</button>
+    <button class="act pri" onclick="doBlogger('unwrap')">Blogger XML &rarr; HTML</button>
+  </div>
+  <div class="row">
+    <span class="lbl" style="width:auto">title</span>
+    <input type="text" id="bgTitle" value="My Blog" style="flex:1">
+    <span class="lbl" style="width:auto">file ka naam</span>
+    <input type="text" id="bgName" value="template.xml" style="flex:1">
+  </div>
+  <textarea id="bgOut" class="short" placeholder="Result appears here..."></textarea>
+  <div class="row">
+    <button class="act" onclick="copyOut('bgOut')">Copy</button>
+    <button class="act pri" onclick="downloadBlogger()">Download file</button>
+    <button class="act" onclick="openOut('bgOut', val('bgName') || 'template.xml')">Open in new tab</button>
+  </div>
+  <div class="status" id="bgStatus"></div>
+</section>
+
+
+<section id="t-yamlboth" class="tool">
+<h2>JSON &harr; YAML</h2>
+<p class="desc">Both ways — JSON to YAML and YAML to JSON. One place.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">JSON → YAML</span></div>
+  <textarea id="yamlIn" data-drop class="short" placeholder='{"name":"example","tags":["a","b"],"db":{"host":"localhost","port":5432}}'></textarea>
+  <div class="row"><button class="act pri" onclick="doYaml()">Create YAML</button></div>
+  <textarea id="yamlOut" class="short" placeholder="name: example&#10;tags:&#10;  - a"></textarea>
+  <div class="row">
+    <button class="act" onclick="copyOut('yamlOut')">Copy</button>
+    <button class="act" onclick="downloadOut('yamlOut','output.yaml')">Download .yaml</button>
+  </div>
+  <div class="status" id="yamlStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">YAML → JSON</span></div>
+  <textarea id="y2In" data-drop class="short" placeholder="name: example&#10;tags:&#10;  - a&#10;  - b&#10;db:&#10;  host: localhost&#10;  port: 5432"></textarea>
+  <div class="row"><button class="act pri" onclick="doYaml2()">Generate JSON</button></div>
+  <textarea id="y2Out" class="short" placeholder="JSON here..."></textarea>
+  <div class="row">
+    <button class="act" onclick="copyOut('y2Out')">Copy</button>
+    <button class="act" onclick="downloadOut('y2Out','output.json')">Download .json</button>
+  </div>
+  <div class="status" id="y2Status"></div>
+
+</section>
+
+<section id="t-hashboth" class="tool">
+<h2>Hash generator</h2>
+<p class="desc">Hash of text or a file — SHA-1, SHA-256, SHA-512.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Text ka hash</span></div>
+  <textarea id="hashIn" data-drop class="short" placeholder="text"></textarea>
+  <div class="row">
+    <button class="act pri" onclick="doHash('SHA-1')">SHA-1</button>
+    <button class="act pri" onclick="doHash('SHA-256')">SHA-256</button>
+    <button class="act pri" onclick="doHash('SHA-512')">SHA-512</button>
+  </div>
+  <textarea id="hashOut" class="short"></textarea>
+  <div class="row"><button class="act" onclick="copyOut('hashOut')">Copy</button></div>
+  <div class="status" id="hashStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">File ka hash</span></div>
+  <div class="row"><input type="file" id="fhPick"></div>
+  <textarea id="fhOut" class="short" placeholder="Hash appears here..."></textarea>
+  <div class="row"><button class="act" onclick="copyOut('fhOut')">Copy</button></div>
+  <div class="status" id="fhStatus"></div>
+
+</section>
+
+<section id="t-colourboth" class="tool">
+<h2>Colour tools</h2>
+<p class="desc">Convert HEX/RGB/HSL and build a full palette from one colour.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Converter</span></div>
+  <div class="row">
+    <input type="text" id="colorIn" placeholder="#3fb950 or rgb(63,185,80) or hsl(128,49%,49%)" style="flex:1">
+    <button class="act pri" onclick="doColor()">Convert</button>
+    <div class="swatch" id="colorSwatch"></div>
+  </div>
+  <textarea id="colorOut" class="short"></textarea>
+  <div class="row"><button class="act" onclick="copyOut('colorOut')">Copy</button></div>
+  <div class="status" id="colorStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Palette</span></div>
+  <div class="row">
+    <input type="text" id="palIn" value="#3fb950" placeholder="#3fb950" style="width:130px">
+    <button class="act pri" onclick="doPalette()">Create palette</button>
+  </div>
+  <div id="palStrip" style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap"></div>
+  <textarea id="palOut" class="short" placeholder="#...  (ek per line)"></textarea>
+  <div class="row"><button class="act" onclick="copyOut('palOut')">Copy</button></div>
+  <div class="status" id="palStatus"></div>
+
+</section>
+
+<section id="t-diffboth" class="tool">
+<h2>Diff / compare</h2>
+<p class="desc">Compare two JSONs or two texts — both in one place.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">JSON compare</span></div>
+  <div class="row" style="align-items:flex-start">
+    <div style="flex:1"><div class="lbl">JSON A (purana)</div><textarea id="cmpA" data-drop class="short"></textarea></div>
+    <div style="flex:1"><div class="lbl">JSON B (naya)</div><textarea id="cmpB" data-drop class="short"></textarea></div>
+  </div>
+  <div class="row">
+    <button class="act pri" onclick="jsonCompare()">Compare</button>
+    <button class="act" onclick="clearIn('cmpA','cmpB','cmpOut','cmpStatus')">Clear</button>
+  </div>
+  <textarea id="cmpOut" class="short" placeholder="Differences appear here..."></textarea>
+  <div class="row">
+    <button class="act" onclick="copyOut('cmpOut')">Copy</button>
+    <button class="act" onclick="downloadOut('cmpOut','diff.txt')">Download .txt</button>
+  </div>
+  <div class="status" id="cmpStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Text diff</span></div>
+  <div class="row" style="align-items:flex-start">
+    <div style="flex:1"><div class="lbl">Text A</div><textarea id="tdA" data-drop class="short"></textarea></div>
+    <div style="flex:1"><div class="lbl">Text B</div><textarea id="tdB" data-drop class="short"></textarea></div>
+  </div>
+  <div class="row"><button class="act pri" onclick="doTextDiff()">Compare</button></div>
+  <textarea id="tdOut" placeholder="Diff..."></textarea>
+  <div class="row">
+    <button class="act" onclick="copyOut('tdOut')">Copy</button>
+    <button class="act" onclick="downloadOut('tdOut','diff.txt')">Download .txt</button>
+  </div>
+  <div class="status" id="tdStatus"></div>
+
+</section>
+
+<section id="t-csvboth" class="tool">
+<h2>CSV tools</h2>
+<p class="desc">CSV to JSON, JSON to CSV and CSV to HTML table — all in one place.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">CSV &harr; JSON</span></div>
+  <div class="row" style="align-items:flex-start">
+    <div style="flex:1"><div class="lbl">CSV</div><textarea id="csvIn" data-drop class="short" placeholder="name,role,score&#10;Asha,Designer,88"></textarea></div>
+    <div style="flex:1"><div class="lbl">JSON (array)</div><textarea id="jsonForCsv" data-drop class="short" placeholder='[{"name":"Asha","score":88}]'></textarea></div>
+  </div>
+  <div class="row">
+    <label class="chk"><input type="checkbox" id="hasHeader" checked> CSV ki pehli row header hai</label>
+    <button class="act pri" onclick="csvToJson()">CSV &rarr; JSON</button>
+    <button class="act pri" onclick="jsonToCsv()">JSON &rarr; CSV</button>
+    <button class="act" onclick="clearIn('csvIn','jsonForCsv','csvOut','csvStatus')">Clear</button>
+  </div>
+  <textarea id="csvOut" class="short" placeholder="Result..."></textarea>
+  <div class="row">
+    <button class="act" onclick="copyOut('csvOut')">Copy</button>
+    <button class="act" onclick="downloadOut('csvOut','output.csv')">Download .csv</button>
+  </div>
+  <div class="status" id="csvStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">CSV → HTML table</span></div>
+  <textarea id="ctIn" data-drop class="short" placeholder="name,score&#10;Asha,88&#10;Ravi,92"></textarea>
+  <div class="row">
+    <label class="chk"><input type="checkbox" id="ctHeader" checked> Pehli row header hai</label>
+    <button class="act pri" onclick="doCsvTable()">Create table</button>
+  </div>
+  <textarea id="ctOut" class="short"></textarea>
+  <div class="row"><button class="act" onclick="copyOut('ctOut')">Copy HTML</button></div>
+  <div class="status" id="ctStatus"></div>
+
+</section>
+
+<section id="t-dateboth" class="tool">
+<h2>Date &amp; time</h2>
+<p class="desc">Timestamps, date add/subtract, difference between two dates and time zones — all in one tool.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Timestamp &harr; Date</span></div>
+  <textarea id="timeIn" data-drop class="short" placeholder="1700000000 or 2024-05-01"></textarea>
+  <div class="row">
+    <button class="act pri" onclick="doTime('ts2date')">Timestamp &rarr; Date</button>
+    <button class="act pri" onclick="doTime('date2ts')">Date &rarr; Timestamp</button>
+    <button class="act" onclick="doTime('now')">Now ka time</button>
+  </div>
+  <textarea id="timeOut" class="short"></textarea>
+  <div class="row"><button class="act" onclick="copyOut('timeOut')">Copy</button></div>
+  <div class="status" id="timeStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Date add / subtract</span></div>
+  <div class="row">
+    <input type="text" id="daDate" placeholder="2026-10-28" style="flex:1">
+    <input type="number" id="daDays" placeholder="din" style="width:100px">
+    <input type="number" id="daMonths" placeholder="mahine" style="width:110px">
+    <input type="number" id="daYears" placeholder="saal" style="width:100px">
+    <button class="act pri" onclick="doDateAdd()">Calculate</button>
+  </div>
+  <textarea id="daOut" class="short"></textarea>
+  <div class="status" id="daStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Date difference</span></div>
+  <div class="row">
+    <input type="text" id="ddA" placeholder="2024-01-15" style="flex:1">
+    <input type="text" id="ddB" placeholder="2026-10-28 (khaali = aaj)" style="flex:1">
+    <button class="act pri" onclick="doDateDiff()">Calculate</button>
+  </div>
+  <textarea id="ddOut" class="short"></textarea>
+  <div class="status" id="ddStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Time zones</span></div>
+  <div class="row">
+    <input type="text" id="tzIn" placeholder="2026-10-28 15:30 (IST maan kar)" style="flex:1">
+    <button class="act pri" onclick="doTz()">Convert</button>
+    <button class="act" onclick="doTz('now')">Now</button>
+  </div>
+  <textarea id="tzOut" class="short"></textarea>
+  <div class="status" id="tzStatus"></div>
+
+</section>
+
+<section id="t-passboth" class="tool">
+<h2>Password tools</h2>
+<p class="desc">Generate a password and check its strength — one place.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Generator</span></div>
+  <div class="row">
+    <input type="number" id="pwLen" value="16" min="6" max="128" style="width:80px">
+    <label class="chk"><input type="checkbox" id="pwUpper" checked> A-Z</label>
+    <label class="chk"><input type="checkbox" id="pwLower" checked> a-z</label>
+    <label class="chk"><input type="checkbox" id="pwDigit" checked> 0-9</label>
+    <label class="chk"><input type="checkbox" id="pwSymbol" checked> !@#$</label>
+    <button class="act pri" onclick="doPassword()">Create</button>
+  </div>
+  <textarea id="pwOut" class="short"></textarea>
+  <div class="row"><button class="act" onclick="copyOut('pwOut')">Copy</button></div>
+  <div class="status" id="pwStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Strength check</span></div>
+  <div class="row">
+    <input type="text" id="pwcIn" placeholder="password here" style="flex:1">
+    <button class="act pri" onclick="doPwStrength()">Check</button>
+  </div>
+  <textarea id="pwcOut" class="short"></textarea>
+  <div class="status" id="pwcStatus"></div>
+
+</section>
+
+<section id="t-textboth" class="tool">
+<h2>Text analysis</h2>
+<p class="desc">Statistics and readability score — together.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Statistics</span></div>
+  <textarea id="stIn" data-drop placeholder="text here"></textarea>
+  <div class="row"><button class="act pri" onclick="doStats()">Count</button></div>
+  <textarea id="stOut" class="short" placeholder="Statistics..."></textarea>
+  <div class="status" id="stStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Readability</span></div>
+  <textarea id="readIn" data-drop class="short" placeholder="text here"></textarea>
+  <div class="row"><button class="act pri" onclick="doRead()">Check</button></div>
+  <textarea id="readOut" class="short"></textarea>
+  <div class="status" id="readStatus"></div>
+
+</section>
+
+<section id="t-numboth" class="tool">
+<h2>Number tools</h2>
+<p class="desc">Numbers to words (Indian system) and Roman numerals — both ways.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Number to words</span></div>
+  <div class="row">
+    <input type="text" id="nwIn" placeholder="1234567.50" style="flex:1">
+    <button class="act pri" onclick="doWords()">In words</button>
+  </div>
+  <textarea id="nwOut" class="short"></textarea>
+  <div class="status" id="nwStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Roman numerals</span></div>
+  <div class="row">
+    <input type="text" id="rnIn" placeholder="1994 or MCMXCIV" style="flex:1">
+    <button class="act pri" onclick="doRoman()">Convert</button>
+  </div>
+  <textarea id="rnOut" class="short"></textarea>
+  <div class="status" id="rnStatus"></div>
+
+</section>
+
+<section id="t-genboth" class="tool">
+<h2>Random &amp; mock data</h2>
+<p class="desc">Lorem ipsum, random picker and mock JSON — all in one place.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Lorem ipsum</span></div>
+  <div class="row">
+    <input type="number" id="loremPara" value="2" min="1" max="20" style="width:80px">
+    <span class="lbl" style="width:auto">paragraphs</span>
+    <input type="number" id="loremSent" value="4" min="1" max="12" style="width:80px">
+    <span class="lbl" style="width:auto">sentences each</span>
+    <button class="act pri" onclick="doLorem()">Create</button>
+  </div>
+  <textarea id="loremOut" class="short"></textarea>
+  <div class="row"><button class="act" onclick="copyOut('loremOut')">Copy</button></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Random picker</span></div>
+  <div class="row">
+    <button class="act" onclick="doRandom('coin')">Coin toss</button>
+    <button class="act" onclick="doRandom('dice')">Dice</button>
+    <span class="lbl" style="width:auto">number</span>
+    <input type="number" id="rndMin" value="1" style="width:80px">
+    <input type="number" id="rndMax" value="100" style="width:80px">
+    <button class="act" onclick="doRandom('number')">Number</button>
+  </div>
+  <textarea id="rndList" class="short" placeholder="enter names to pick from the list — one per line"></textarea>
+  <div class="row"><button class="act pri" onclick="doRandom('list')">Choose from list</button></div>
+  <textarea id="rndOut" class="short"></textarea>
+  <div class="status" id="rndStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Mock JSON</span></div>
+  <div class="row">
+    <input type="number" id="mockCount" value="5" min="1" max="200" style="width:90px">
+    <button class="act pri" onclick="makeMock()">Generate data</button>
+    <button class="act" onclick="copyOut('mockOut')">Copy</button>
+    <button class="act" onclick="downloadOut('mockOut','mock.json')">Download .json</button>
+  </div>
+  <textarea id="mockOut" class="short" placeholder="Mock records here..."></textarea>
+  <div class="status" id="mockStatus"></div>
+
+</section>
+
+<section id="t-cssboth" class="tool">
+<h2>CSS generators</h2>
+<p class="desc">Gradient and box shadow — with live preview.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Gradient</span></div>
+  <div class="row">
+    <input type="text" id="gradA" value="#3fb950" style="width:110px">
+    <input type="text" id="gradB" value="#4493f8" style="width:110px">
+    <span class="lbl" style="width:auto">angle</span>
+    <input type="number" id="gradAngle" value="135" min="0" max="360" style="width:80px">
+    <select id="gradType">
+      <option value="linear">linear</option>
+      <option value="radial">radial</option>
+    </select>
+    <button class="act pri" onclick="doGrad()">Create</button>
+  </div>
+  <div id="gradPreview" style="height:120px;border-radius:10px;border:1px solid var(--line);margin-bottom:10px"></div>
+  <textarea id="gradOut" class="short" placeholder="background: linear-gradient(...)"></textarea>
+  <div class="row"><button class="act" onclick="copyOut('gradOut')">Copy CSS</button></div>
+  <div class="status" id="gradStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Box shadow</span></div>
+  <div class="row">
+    <span class="lbl" style="width:auto">x</span><input type="number" id="shX" value="0" style="width:70px">
+    <span class="lbl" style="width:auto">y</span><input type="number" id="shY" value="8" style="width:70px">
+    <span class="lbl" style="width:auto">blur</span><input type="number" id="shBlur" value="24" style="width:70px">
+    <span class="lbl" style="width:auto">spread</span><input type="number" id="shSpread" value="-4" style="width:70px">
+    <input type="text" id="shColor" value="rgba(0,0,0,0.45)" style="width:170px">
+    <label class="chk"><input type="checkbox" id="shInset"> inset</label>
+    <button class="act pri" onclick="doShadow()">Create</button>
+  </div>
+  <div id="shPreview" style="background:#1f2630;border:1px solid var(--line);border-radius:12px;height:110px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;color:#8b98a5;font-size:12px">preview</div>
+  <textarea id="shOut" class="short" placeholder="box-shadow: ..."></textarea>
+  <div class="row"><button class="act" onclick="copyOut('shOut')">Copy CSS</button></div>
+  <div class="status" id="shStatus"></div>
+
+</section>
+
+<section id="t-listboth" class="tool">
+<h2>Line &amp; list tools</h2>
+<p class="desc">Sort/dedupe lines and compare two lists — one place.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Line tools</span></div>
+  <textarea id="linesIn" data-drop class="short" placeholder="ek line per row"></textarea>
+  <div class="row">
+    <button class="act" onclick="doLines('sort')">Sort A-Z</button>
+    <button class="act" onclick="doLines('sortdesc')">Sort Z-A</button>
+    <button class="act" onclick="doLines('reverse')">Reverse</button>
+    <button class="act" onclick="doLines('dedupe')">Dedupe</button>
+    <button class="act" onclick="doLines('empty')">Khaali lines hatao</button>
+    <button class="act" onclick="doLines('number')">Number lagao</button>
+    <button class="act" onclick="doLines('shuffle')">Shuffle</button>
+    <button class="act" onclick="doLines('trim')">Trim</button>
+  </div>
+  <textarea id="linesOut" class="short" placeholder="Result..."></textarea>
+  <div class="row"><button class="act" onclick="copyOut('linesOut')">Copy</button></div>
+  <div class="status" id="linesStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">List operations</span></div>
+  <div class="row" style="align-items:flex-start">
+    <div style="flex:1"><div class="lbl">List A</div><textarea id="setA" data-drop class="short" placeholder="apple&#10;banana&#10;cherry"></textarea></div>
+    <div style="flex:1"><div class="lbl">List B</div><textarea id="setB" data-drop class="short" placeholder="banana&#10;dragon&#10;apple"></textarea></div>
+  </div>
+  <div class="row">
+    <button class="act pri" onclick="doSets('common')">Common (A &#8745; B)</button>
+    <button class="act" onclick="doSets('onlyA')">Only in A</button>
+    <button class="act" onclick="doSets('onlyB')">Only in B</button>
+    <button class="act" onclick="doSets('union')">Dono (A &#8746; B)</button>
+  </div>
+  <textarea id="setsOut" class="short" placeholder="Result..."></textarea>
+  <div class="row"><button class="act" onclick="copyOut('setsOut')">Copy</button></div>
+  <div class="status" id="setsStatus"></div>
+
+</section>
+
+<section id="t-b64both" class="tool">
+<h2>Base64</h2>
+<p class="desc">Base64 of text or a file — both in one place.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Base64 text</span></div>
+  <textarea id="b64In" data-drop class="short" placeholder="text or base64"></textarea>
+  <div class="row">
+    <button class="act pri" onclick="doB64('enc')">Encode</button>
+    <button class="act pri" onclick="doB64('dec')">Decode</button>
+  </div>
+  <textarea id="b64Out" class="short"></textarea>
+  <div class="row"><button class="act" onclick="copyOut('b64Out')">Copy</button></div>
+  <div class="status" id="b64Status"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">File &rarr; Base64</span></div>
+  <div class="row">
+    <input type="file" id="filePick">
+    <button class="act" onclick="copyOut('fileOut')">Copy</button>
+  </div>
+  <textarea id="fileOut" class="short" placeholder="data:image/png;base64,..."></textarea>
+  <div class="status" id="fileStatus"></div>
+
+</section>
+
+<section id="t-caseboth" class="tool">
+<h2>Case &amp; slug</h2>
+<p class="desc">Change letter case and create URL slugs.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Case converter</span></div>
+  <textarea id="caseIn" data-drop class="short" placeholder="enter text here"></textarea>
+  <div class="row">
+    <button class="act" onclick="doCase('upper')">UPPER</button>
+    <button class="act" onclick="doCase('lower')">lower</button>
+    <button class="act" onclick="doCase('title')">Title Case</button>
+    <button class="act" onclick="doCase('sentence')">Sentence case</button>
+    <button class="act" onclick="doCase('camel')">camelCase</button>
+    <button class="act" onclick="doCase('pascal')">PascalCase</button>
+    <button class="act" onclick="doCase('snake')">snake_case</button>
+    <button class="act" onclick="doCase('kebab')">kebab-case</button>
+    <button class="act" onclick="doCase('constant')">CONSTANT_CASE</button>
+  </div>
+  <textarea id="caseOut" class="short" placeholder="Result..."></textarea>
+  <div class="row"><button class="act" onclick="copyOut('caseOut')">Copy</button></div>
+  <div class="status" id="caseStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">Slug generator</span></div>
+  <textarea id="slugIn" data-drop class="short" placeholder="Mera Blog Post — 2024!"></textarea>
+  <div class="row"><button class="act pri" onclick="doSlug()">Create slug</button></div>
+  <textarea id="slugOut" class="short" placeholder="mera-blog-post-2024"></textarea>
+  <div class="row"><button class="act" onclick="copyOut('slugOut')">Copy</button></div>
+  <div class="status" id="slugStatus"></div>
+
+</section>
+
+<section id="t-htmlboth" class="tool">
+<h2>HTML tools</h2>
+<p class="desc">HTML entities and clean text from HTML.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">HTML entities</span></div>
+  <textarea id="htmlIn" data-drop class="short" placeholder='<div class="x">Hi & bye</div>'></textarea>
+  <div class="row">
+    <button class="act pri" onclick="doHtml('esc')">Escape</button>
+    <button class="act pri" onclick="doHtml('unesc')">Unescape</button>
+  </div>
+  <textarea id="htmlOut" class="short"></textarea>
+  <div class="row"><button class="act" onclick="copyOut('htmlOut')">Copy</button></div>
+  <div class="status" id="htmlStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">HTML &rarr; text</span></div>
+  <textarea id="htIn" data-drop class="short" placeholder="<p>Hello <b>world</b></p>"></textarea>
+  <div class="row"><button class="act pri" onclick="doHtmlText()">Extract text</button></div>
+  <textarea id="htOut" class="short"></textarea>
+  <div class="row"><button class="act" onclick="copyOut('htOut')">Copy</button></div>
+  <div class="status" id="htStatus"></div>
+
+</section>
+
+<section id="t-jsoncode" class="tool">
+<h2>JSON &rarr; code</h2>
+<p class="desc">JSON to TypeScript interfaces or SQL INSERT statements.</p>
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">JSON &rarr; TypeScript</span></div>
+  <textarea id="tsIn" data-drop class="short" placeholder='{"id":1,"name":"example","tags":["a"],"address":{"city":"Pune"}}'></textarea>
+  <div class="row">
+    <input type="text" id="tsName" placeholder="interface name (default: Root)" value="Root">
+    <button class="act pri" onclick="jsonToTs()">Generate interfaces</button>
+  </div>
+  <textarea id="tsOut" class="short" placeholder="export interface Root { ... }"></textarea>
+  <div class="row">
+    <button class="act" onclick="copyOut('tsOut')">Copy</button>
+    <button class="act" onclick="downloadOut('tsOut','types.ts')">Download .ts</button>
+  </div>
+  <div class="status" id="tsStatus"></div>
+
+<div class="row" style="margin-top:14px"><span class="lbl" style="font-size:12px;font-weight:700;color:var(--text)">JSON &rarr; SQL</span></div>
+  <textarea id="sqlIn" data-drop class="short" placeholder='[{"id":1,"name":"Asha","city":"Pune"}]'></textarea>
+  <div class="row">
+    <input type="text" id="sqlTable" placeholder="table name" value="my_table" style="flex:1">
+    <button class="act pri" onclick="doSql()">Create SQL</button>
+  </div>
+  <textarea id="sqlOut" class="short" placeholder="INSERT INTO my_table (...) VALUES (...);"></textarea>
+  <div class="row">
+    <button class="act" onclick="copyOut('sqlOut')">Copy</button>
+    <button class="act" onclick="downloadOut('sqlOut','insert.sql')">Download .sql</button>
+  </div>
+  <div class="status" id="sqlStatus"></div>
+
+</section>
+</main>
+</div>
+
+  
+    <script>window.TOOL_DATA_URL = "https://raw.githubusercontent.com/NEFIPLAYZ/tooljson/main/data.json";</script>
+    <script src="https://raw.githubusercontent.com/NEFIPLAYZ/tooljs/main/script.js" defer></script>
+</body>
+</html>
